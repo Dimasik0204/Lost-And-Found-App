@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{> header}}
+
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  {{> login-menu}}
+
+<h1>LOGIN</h1>
+
+                                                               
+<form method="POST" action="/login">
+    <input type="text" placeHolder="Enter username" name="username" required/>
+    <input type="password" placeholder="Enter password" name="password" required/>
+    <br><br>
+    <button class="button">Login</button>
+</form><br>
+<form method="POST" action="/login-guest">
+    <input type="hidden" value="guest" name="usernameGuest">
+    <input type="hidden" value="123456" name="passwordGuest">
+    <button class="button">Guest Login</button>
+</form>
+<br>
+<button class="button" onclick="window.location.href='/register'">Register</button>
+
+{{errorMessage}}
+
+    {{> footer}}
+</body>
+</html>
+
+

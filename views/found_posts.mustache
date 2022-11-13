@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{> header}}
+
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+{{> menu}}
+<br>   
+
+    <h1 class = "Found">🐾 Found Pets 🐾 </h1><hr>
+    
+
+    <br><div><button class="button" onclick="window.location.href='/add_found_post'">Found a pet!</button></div><br>
+
+               
+      
+    <ul style="list-style: none;">
+    {{#result}}
+        <li><h3>A {{species}} named {{name}}.</h3>
+        <ul style="list-style: none;">
+            <li><b>Breed:</b> {{breed}} </li>
+            <li><b>Color:</b> {{color}}</li>
+            <li><b>Size:</b> {{size}}</li>
+            <li><b>Age:</b> {{age}}</li>
+            <li><b>Found on:</b> {{dateFound}}</li>
+            <li><b>Description:</b> {{description}}</li>
+            <img src = "/uploads/{{pet_pic}}" class="uploaded-pic"/>
+        </ul>
+            <h4>Comments</h4>
+            <ol>
+                {{#comment}}
+                    <li>
+                        {{body}}
+                    </li>
+                {{/comment}}
+            </ol> 
+            <hr>
+                <form method="POST" action = "/comments">  
+                    <textarea type="text" placeholder = "add a comment..." name ="comment" cols="31" rows="3" required></textarea>
+                    <input type = "hidden" name=id value={{id}} /> 
+                    <br><button class="button">Add a comment for {{name}}</button>
+                </form>      
+            <hr> 
+        {{/result}}
+        {{^result}}
+          <h1>No Posts yet..</h1>
+        {{/result}}
+    </ul><br><br><br>
+        {{> footer}}
+    </body>
+</html>
